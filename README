@@ -1,0 +1,27 @@
+1- Files inside `asterisk_config` should be imported in `/etc/asterisk` configs : `extensions.conf`, `pjsip.conf`, `agents.conf`, and `queues.conf` using include statements.
+For example, to include your custom dialplan and configuration edits in `pjsip.conf`, add the following line:
+```
+#include /var/lib/agi-bin/asterisk/HNO/asterisk_config/extensions_custom.conf
+```
+This ensures that the contents of `extensions_custom.conf` are loaded as part of your Asterisk configuration.
+
+
+2- Ensure all these files are always owned by user and group `asterisk`. If needed, run:
+```
+chown -R asterisk:asterisk project_folder
+```
+
+3- To change the called URL in MicroSIP in call answer, edit:
+
+```
+C:\Users\%USERNAME%\AppData\Roaming\MicroSIP\microsip.ini
+```
+
+Set:
+
+```
+cmdCallAnswer=C:\Users\%USERNAME%\AppData\Roaming\MicroSIP\windows-microsip.bat
+```
+
+
+
