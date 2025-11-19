@@ -17,6 +17,7 @@ load_dotenv(ENV_PATH)
 BACKEND_URL = os.getenv("BACKEND_URL", "https://2511-onde.positif.ma")
 API_BASE = f"{BACKEND_URL}/backend/api/cas-entrants/incoming-call"
 TOKEN = os.getenv("BACKEND_TOKEN")
+
 VERIFY_TLS = True
 TIMEOUT = 5
 
@@ -29,6 +30,7 @@ def _log(message):
             f.write(line)
     except Exception:
         pass
+_log(f"Using BACKEND_TOKEN: {TOKEN}")
 
 def _read_agi_env():
     env = {}

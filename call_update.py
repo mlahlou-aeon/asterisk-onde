@@ -71,12 +71,7 @@ def main():
     duree_raw = env.get("agi_arg_3")
     statut = env.get("agi_arg_4") or "termine"
 
-    if (poste is None or poste == "") and (statut != "appel_encours"):
-        poste_val = None
-        statut = "aucune_reponse"
-        _log("[call_update.py] aucune reponse (no response), setting statut to 'aucune_reponse'")
-    else:
-        poste_val = poste
+    _log(f"[call_update.py] statut is '{statut}'")
 
     if duree_raw is None or duree_raw == "":
         duree_val = None
@@ -92,7 +87,7 @@ def main():
 
     url = f"{API_BASE}/{call_id}"
     payload_obj = {
-        "poste_appel": poste_val,
+        "poste_appel": poste,
         "statut_appel": statut,
         "duree_appel": duree_val
     }
